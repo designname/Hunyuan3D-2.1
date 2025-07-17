@@ -1,0 +1,11 @@
+# cloudbuild.yaml (находится в корне вашего репозитория)
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: [
+    'build',
+    '-t', 'gcr.io/$PROJECT_ID/ddd3-app:latest', # Имя вашего Docker-образа
+    '-f', './docker/Dockerfile', # <-- Это указывает путь к Dockerfile
+    '.' # <-- Это указывает контекст сборки (корневой каталог репозитория)
+  ]
+images:
+- 'gcr.io/$PROJECT_ID/ddd3-app:latest' # Убедитесь, что имя образа здесь совпадает
